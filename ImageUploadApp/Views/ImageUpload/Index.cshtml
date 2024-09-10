@@ -1,0 +1,26 @@
+﻿@model List<ImageModel>
+
+<form asp-action="Upload" asp-controller="ImageUpload" method="post" enctype="multipart/form-data">
+    <input type="file" name="files" multiple accept=".jpeg,.jpg,.png,.dicom" />
+    <button type="submit">Upload Images</button>
+</form>
+
+<div class="gallery">
+    @foreach (var image in Model)
+    {
+        <div class="image-item">
+            <img src="@image.ImagePath" class="thumbnail" alt="@image.ImageName" />
+            <a href="@Url.Action("ViewImage", new { fileName = image.ImageName })" class="view-button">View Full Size</a>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <script>
+        document.querySelectorAll('.thumbnail').forEach(item => {
+            item.addEventListener('dblclick', function () {
+                window.open(item.src, '_blank');
+            });
+        });
+    </script>
+}

@@ -1,0 +1,56 @@
+﻿/* Gallery container */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Adjust the minimum size of images */
+    gap: 10px; /* Space between images */
+    margin-top: 20px;
+}
+
+/* Each image item */
+.image-item {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Thumbnail styling */
+.thumbnail {
+    width: 100%; /* Make sure the image takes up the full width of its container */
+    height: auto; /* Maintain aspect ratio */
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+    /* Zoom effect on hover */
+    .thumbnail:hover {
+        transform: scale(1.1); /* Slight zoom-in effect */
+    }
+
+/* View button */
+.view-button {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 5px 10px;
+    text-decoration: none;
+    display: none;
+}
+
+/* Show the "View Full Size" button on hover */
+.image-item:hover .view-button {
+    display: inline-block;
+}
+
+/* Responsive breakpoints for smaller screens */
+@media (max-width: 768px) {
+    .gallery {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    }
+}
